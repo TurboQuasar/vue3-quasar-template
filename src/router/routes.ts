@@ -13,6 +13,16 @@ export const asyncRoutesChildren: AppRouteModule[] = [
     component: () => import('pages/Home/Home.vue'),
   },
   {
+    path: '/table-detail',
+    name: 'tableDetail',
+    meta: {
+      title: 'Treats 详情',
+      icon: 'blur_linear',
+      isHidden: true
+    },
+    component: () => import('pages/Home/TableDetail.vue')
+  },
+  {
     path: '/start',
     name: 'Start',
     meta: {
