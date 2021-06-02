@@ -32,6 +32,10 @@ const option = {
         borderColor: 'rgba(0,0,0,0)',
         shadowColor: 'rgba(0,0,0,0)',
         shadowOffsetY: 0,
+        borderRadius: 5,
+        borderWidth: 2,
+        shadowBlur: 6,
+        shadowOffsetX: 3,
       },
       lineStyle: {
         width: 0,
@@ -84,21 +88,20 @@ const option = {
           // padding: [11, 5, 7],
           padding: [0, 0, 10, 0],
           /*
-除了padding[0]建议必须是0之外，其他三项可随意设置
+            除了padding[0]建议必须是0之外，其他三项可随意设置
 
-和CSSpadding相同，[上，右，下，左]
+            和CSSpadding相同，[上，右，下，左]
 
-如果需要下边线超出文字，设左右padding即可，注：左右padding最好相同
+            如果需要下边线超出文字，设左右padding即可，注：左右padding最好相同
 
-padding[2]的10:
+            padding[2]的10:
 
-10 = 文字距下边线的距离 + 下边线的宽度
+            10 = 文字距下边线的距离 + 下边线的宽度
 
-如：UI图中文字距下边线距离为7 下边线宽度为2
+            如：UI图中文字距下边线距离为7 下边线宽度为2
 
-则padding: [0, 0, 9, 0]
-
-        */
+            则padding: [0, 0, 9, 0]
+          */
           // 这里的margin和axisLabel的margin要一致!
           margin: 15,
           // 移入时的字体大小
@@ -118,9 +121,9 @@ padding[2]的10:
                 // offset: 0.9,
                 offset: 0.86,
                 /*
-0.86 = （文字 + 文字距下边线的距离）/（文字 + 文字距下边线的距离 + 下边线的宽度）
+                  0.86 = （文字 + 文字距下边线的距离）/（文字 + 文字距下边线的距离 + 下边线的宽度）
 
-            */
+                */
                 color: '#fff', // 0% 处的颜色
               },
               {
