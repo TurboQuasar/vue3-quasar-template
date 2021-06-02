@@ -9,9 +9,7 @@
   "scripts": {
     "dev": "NODE_ENV=test quasar dev",
     "dev:spa": "yarn dev",
-    "dev:electron": "yarn dev -- -m electron",
     "build:spa": "quasar build",
-    "build:electron": "quasar build -m electron",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "lint:fix": "eslint --fix --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
