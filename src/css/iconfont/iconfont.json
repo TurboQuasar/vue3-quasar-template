@@ -1,0 +1,23 @@
+{
+  "id": "1187441",
+  "name": "相册100",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "图片记录",
+  "glyphs": [
+    {
+      "icon_id": "7450650",
+      "name": "右箭头",
+      "font_class": "youjiantou",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "7450662",
+      "name": "左箭头",
+      "font_class": "zuojiantou",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    }
+  ]
+}

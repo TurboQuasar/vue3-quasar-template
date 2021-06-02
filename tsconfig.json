@@ -1,0 +1,22 @@
+{
+  "extends": "@quasar/app/tsconfig-preset",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "strictPropertyInitialization": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "store/*": ["src/store/*"],
+      "utils/*": ["src/utils/*"],
+      "router/*": ["src/router/*"],
+      "components/*": ["src/components/*"],
+      "boot/*": ["src/boot/*"],
+      "css/*": ["src/css/*"],
+      "mock/*": ["src/mock/*"],
+      "models/*": ["src/models/*"],
+      "enums/*": ["src/enums/*"],
+      "classes/*": ["src/classes/*"]
+    },
+  }
+}
