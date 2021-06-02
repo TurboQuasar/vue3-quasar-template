@@ -42,12 +42,27 @@
       <q-badge color="red" text-color="" floating> 2 </q-badge>
       <q-tooltip>通知</q-tooltip>
     </q-btn>
+    <q-btn-dropdown color="primary" :label="lang">
+      <q-list>
+        <q-item
+          clickable
+          v-close-popup
+          @click="onItemClick(locale.value)"
+          v-for="locale in locales"
+          :key="locale.value"
+        >
+          <q-item-section>
+            <q-item-label>{{ locale.label }}</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </q-btn-dropdown>
     <q-btn round flat>
       <q-menu>
         <div class="row no-wrap q-pa-md">
           <div class="column items-center">
             <q-avatar size="72px">
-              <img :src="$PUBLIC_PATH + 'data/avatar.jpg'" />
+              <img :src="'data/avatar.jpg'" />
             </q-avatar>
 
             <div class="text-subtitle1 q-mt-md q-mb-xs">Hi！ {{ role }}</div>
@@ -63,7 +78,7 @@
         </div>
       </q-menu>
       <q-avatar size="26px">
-        <img :src="$PUBLIC_PATH + 'data/avatar.jpg'" />
+        <img :src="'data/avatar.jpg'" />
       </q-avatar>
       <q-tooltip>账号</q-tooltip>
     </q-btn>
@@ -120,8 +135,23 @@ export default defineComponent({
     return {
       search: ref(''),
       role: computed(() => $store.getters['auth/getRole']),
+      locales: [
+        {
+          label: 'en-US',
+          value: 'en-US',
+        },
+        {
+          label: 'zh-CN',
+          value: 'zh-CN',
+        },
+      ],
       fullScreen,
       logout,
+      lang: computed(() => $store.getters['auth/getLang']),
+      onItemClick(value: string) {
+        // console.log('Clicked on an Item')
+        $store.commit('auth/SET_LANG', value);
+      },
     };
   },
 });

@@ -38,6 +38,7 @@ module.exports = configure(function (/* ctx */) {
       'router',
       'mock',
       'i18n',
+      'echarts',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css  src/css

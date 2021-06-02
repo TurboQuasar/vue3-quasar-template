@@ -34,6 +34,10 @@ const mutation: MutationTree<IAuthState> = {
     state.token = payload;
   },
 
+  SET_LANG: (state, payload) => {
+    state.lang = payload;
+  },
+
   SET_ROLE: (state, payload) => {
     state.role = payload;
   },

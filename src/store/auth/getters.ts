@@ -3,6 +3,12 @@ import { StateInterface } from '../index';
 import { IAuthState } from './state';
 
 const getters: GetterTree<IAuthState, StateInterface> = {
+  getLang: (state) => {
+    return state.lang;
+  },
+  getToken: (state) => {
+    return state.token;
+  },
   getRole: (state) => {
     return state.role;
   },

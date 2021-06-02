@@ -10,7 +10,7 @@ function createInstance(options: AxiosRequestConfig) {
   // 请求拦截
   instance.interceptors.request.use(
     (config: AxiosRequestConfig) => {
-      const token = store.state['auth/token'];
+      const token = store.getters['auth/getToken'];
       config.headers.Authorization = 'Bearer ' + token;
       return config;
     },
