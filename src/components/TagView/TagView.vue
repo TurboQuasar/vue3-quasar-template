@@ -24,7 +24,7 @@
         <template v-slot:default>
           <q-icon size="1.3rem" name="home" />
           <div class="line-limit-length" style="margin: 0px 5px 0px 5px">
-            主页
+            {{ $t('home') }}
           </div>
         </template>
       </q-route-tab>
@@ -40,7 +40,9 @@
       >
         <template v-slot:default>
           <q-icon size="1.3rem" v-if="v.icon" :name="v.icon" />
-          <div class="line-limit-length">{{ v.title }}</div>
+          <div class="line-limit-length">
+            {{ $tc(v.title.split(':')[0]) }}:{{ v.title.split(':')[1] }}
+          </div>
           <q-icon
             class="tagView-remove-icon"
             style="display: inline-flex"
@@ -158,7 +160,7 @@ export default defineComponent({
 }
 
 .line-limit-length {
-  margin: 0px 5px 0px 7px;
+  margin: 0 5px 0 7px;
   overflow: hidden;
   max-width: 180px;
   white-space: nowrap;

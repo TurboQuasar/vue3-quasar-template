@@ -6,7 +6,7 @@ export const asyncRoutesChildren: AppRouteModule[] = [
     path: '/',
     name: 'Home',
     meta: {
-      title: '主页',
+      title: 'home',
       icon: 'home',
       keepAlive: true,
     },
@@ -16,7 +16,7 @@ export const asyncRoutesChildren: AppRouteModule[] = [
     path: '/table-detail',
     name: 'tableDetail',
     meta: {
-      title: 'Treats 详情',
+      title: 'treatsDetail',
       icon: 'blur_linear',
       isHidden: true,
     },

@@ -19,7 +19,7 @@ import { i18n } from 'boot/i18n';
  */
 
 const sessionState = createPersistedState({
-  key: 'vqm',
+  key: 'vqt',
   paths: ['auth.token', 'auth.role', 'auth.tagView'],
   storage: window.sessionStorage,
 });
@@ -66,6 +66,7 @@ store.watch(
     return state.auth.lang;
   },
   (newVal) => {
+    console.log('change to ' + newVal);
     i18n.global.locale = newVal;
   },
   {

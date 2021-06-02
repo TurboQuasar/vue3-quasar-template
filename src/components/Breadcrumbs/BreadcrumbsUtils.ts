@@ -15,6 +15,6 @@ export function setBreadcrumbs(matched, query, store) {
   }
   const last = temp.length - 1;
   // 如果有 query 则取第一个参数附加在 title 上
-  Object.keys(query).length && (temp[last].title += '：' + getFirst(query));
+  Object.keys(query).length && (temp[last].title += ':' + getFirst(query));
   store.commit('auth/SET_BREADCRUMBS', temp);
 }

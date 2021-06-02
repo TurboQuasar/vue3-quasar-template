@@ -14,6 +14,7 @@ export interface ITagView {
   title: string;
   icon: string;
   keepAlive: string;
+  query?: string;
 }
 function state(): IAuthState {
   return {

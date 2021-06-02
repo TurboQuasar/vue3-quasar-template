@@ -55,6 +55,8 @@ export interface RouteMeta {
   isHidden?: boolean;
 
   isOpen?: boolean;
+
+  itemLabel?: string;
 }
 
 // @ts-ignore

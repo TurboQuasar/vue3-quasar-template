@@ -10,14 +10,14 @@
           v-if="v.title"
           class="items-center"
           style="vertical-align: middle"
-          :label="v.title"
+          :label="`${$tc(v.title.split(':')[0])}:${v.title.split(':')[1]}`"
           :icon="v.icon === '' ? undefined : v.icon"
           :key="i + v.title"
         >
           <template v-slot:default>
             <div
               v-if="breadcrumbs.length !== i + 1"
-              style="margin: 0px 8px 0px 8px"
+              style="margin: 0 8px 0 8px"
             >
               /
             </div>

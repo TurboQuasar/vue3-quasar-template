@@ -12,7 +12,7 @@ export function addTagView(to, store) {
     icon: to.meta.icon,
     keepAlive: to.meta.keepAlive || false,
   };
-  getFirst(to.query) !== undefined && (t.title += '：' + getFirst(to.query));
+  getFirst(to.query) !== undefined && (t.title += ':' + getFirst(to.query));
   if (
     t.title !== null &&
     t.title !== undefined &&

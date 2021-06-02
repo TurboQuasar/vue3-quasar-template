@@ -36,7 +36,7 @@
             <q-icon :name="item.meta.icon" />
           </q-item-section>
           <q-item-section>
-            {{ item.meta.title }}
+            {{ $t(item.meta.title) }}
           </q-item-section>
         </q-item>
 

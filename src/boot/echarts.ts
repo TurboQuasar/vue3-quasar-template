@@ -1,3 +1,4 @@
+// https://echarts.apache.org/examples/zh/index.html
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { PieChart, LineChart } from 'echarts/charts';

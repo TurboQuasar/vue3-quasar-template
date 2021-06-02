@@ -24,6 +24,7 @@ export const config = {
     { text: '关于作者', URL: '' },
   ],
   $t: i18n.global.t,
+  $tc: i18n.global.tc,
 };
 const mergerConfig = (app) => {
   Object.assign(app.config.globalProperties, config);
