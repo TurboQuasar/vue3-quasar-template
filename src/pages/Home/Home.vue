@@ -75,7 +75,7 @@
         </div>
         <div class="col-xs-12 col-md-9">
           <q-card
-            class="cimo-shadow col-11"
+            class="vqt-shadow col-11"
             style="height: 100%; min-height: 390px; padding: 3px"
           >
             <v-chart class="" :option="charts2Option" autoresize />
@@ -85,14 +85,14 @@
       <div class="row q-col-gutter-md">
         <div class="col-xs-12 col-md-3">
           <q-card
-            class="cimo-shadow"
+            class="vqt-shadow"
             style="height: 430px; width: 100%; padding: 3px"
           >
             <v-chart class="" :option="chartPie" autoresize />
           </q-card>
         </div>
         <div class="col-xs-12 col-md-3">
-          <q-card class="my-card cimo-shadow">
+          <q-card class="my-card vqt-shadow">
             <q-img :src="'data/bird.jpg'" />
             <q-card-section>
               <div class="text-overline text-orange-9">Overline</div>
@@ -126,7 +126,7 @@
         </div>
         <div class="col-xs-12 col-md-6">
           <q-table
-            class="cimo-shadow"
+            class="vqt-shadow"
             :grid="$q.screen.xs"
             title="Treats"
             :rows="rows"

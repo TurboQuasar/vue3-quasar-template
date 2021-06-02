@@ -1,8 +1,8 @@
-.cimo-shadow {
+.vqt-shadow {
     box-shadow: rgba(0, 0, 0, 0.1) 0 2px 12px 0 !important;
     transition: All 0.2s ease-in-out;
 }
-.cimo-shadow:hover{
+.vqt-shadow:hover{
     box-shadow: rgba(0, 0, 0, 0.1) 0 2px 13px 3px !important;
 }
 .base-card-shadow{

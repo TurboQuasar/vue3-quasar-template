@@ -18,9 +18,9 @@ export const asyncRoutesChildren: AppRouteModule[] = [
     meta: {
       title: 'Treats 详情',
       icon: 'blur_linear',
-      isHidden: true
+      isHidden: true,
     },
-    component: () => import('pages/Home/TableDetail.vue')
+    component: () => import('pages/Home/TableDetail.vue'),
   },
   {
     path: '/start',
@@ -120,7 +120,4 @@ export const ErrorRoute: AppRouteRecordRaw = {
     title: '',
   },
 };
-export const constantRoutes: AppRouteRecordRaw[] = [
-  LoginRoute,
-  ErrorRoute,
-];
+export const constantRoutes: AppRouteRecordRaw[] = [LoginRoute, ErrorRoute];

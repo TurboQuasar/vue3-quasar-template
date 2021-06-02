@@ -46,7 +46,7 @@ module.exports = configure(function (/* ctx */) {
       'app.scss',
       'main.css',
       'transition.css',
-      'cimo.css',
+      'vqt.css',
       'iconfont/iconfont.css',
     ],
 
