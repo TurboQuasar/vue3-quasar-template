@@ -113,7 +113,7 @@
             class="cimo-shadow"
             :grid="$q.screen.xs"
             title="Treats"
-            :data="data"
+            :rows="rows"
             :columns="columns"
             :filter="filter"
             row-key="name"
@@ -148,7 +148,6 @@
 import { defineComponent, ref } from 'vue';
 import BaseContent from 'components/BaseContent/BaseContent.vue';
 import {CountTo} from 'vue3-count-to'
-import { thumbStyle } from 'components/BaseContent/ThumbStyle'
 import chartPie from './echarts/echarts-1'
 import charts2Option from './echarts/echarts-2'
 import { income, expense, total } from './echarts/echarts-3'
@@ -157,12 +156,16 @@ import {useRouter} from "vue-router";
 import VChart, { THEME_KEY } from "vue-echarts";
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
-import { PieChart } from "echarts/charts";
+import { PieChart, LineChart } from "echarts/charts";
 import {
   TitleComponent,
   TooltipComponent,
   LegendComponent,
-  GridComponent
+  GridComponent,
+  ToolboxComponent,DataZoomComponent,
+  VisualMapComponent,
+  TimelineComponent,
+  CalendarComponent,
 } from "echarts/components";
 use([
   CanvasRenderer,
@@ -170,7 +173,13 @@ use([
   TitleComponent,
   TooltipComponent,
   LegendComponent,
-  GridComponent
+  GridComponent,
+  ToolboxComponent,
+  DataZoomComponent,
+  VisualMapComponent,
+  TimelineComponent,
+  CalendarComponent,
+  LineChart
 ]);
 export default defineComponent({
   name: 'Home',
@@ -178,6 +187,9 @@ export default defineComponent({
     BaseContent,
     CountTo,
     VChart
+  },
+  provide: {
+    [THEME_KEY]: "light"
   },
   setup() {
     const $router = useRouter();
@@ -198,7 +210,6 @@ export default defineComponent({
       income: ref(income),
       expense: ref(expense),
       total: ref(total),
-      thumbStyle,
       lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       filter: ref(''),
       columns: ref([
@@ -237,7 +248,7 @@ export default defineComponent({
           sortable: true
         }
       ]),
-      data: ref([
+      rows: ref([
         {
           name: 'FrozenYogurt',
           calories: 159,
