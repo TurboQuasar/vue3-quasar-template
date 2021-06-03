@@ -21,8 +21,6 @@ SwiperCore.use([Navigation, Pagination, EffectCoverflow, Parallax]);
 // 全局注册 swiper 必备组件
 const plugins = [Swiper, SwiperSlide];
 
-// import { ElCarousel, ElCarouselItem } from 'element-plus';
-// "async" is optional;
 // more info on params: https://quasar.dev/quasar-cli/boot-files
 export default boot(({ app }) => {
   // something to do
