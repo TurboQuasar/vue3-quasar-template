@@ -1,6 +1,6 @@
-# template
+# cloudMusic (vue3-quasar-music)
 
-vue3 quasar template
+基于 vue3-quasar 的网易云客户端
 
 ## Install the dependencies
 

@@ -24,7 +24,7 @@
 
         <q-tab-panel name="htu">
           <div class="base-markdown-content">
-            <v-md-editor v-model="content" mode="preview"></v-md-editor>
+            <v-md-editor v-model="content" mode="preview"> </v-md-editor>
           </div>
         </q-tab-panel>
       </q-tab-panels>
