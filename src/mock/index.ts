@@ -17,6 +17,7 @@ export function makeServer({ environment = 'development' } = {}) {
       this.passthrough('/api/**');
       this.passthrough('/data/**');
       this.passthrough('https://www.baidu.com/**');
+      this.passthrough('https://api.growingio.com/**');
       this.namespace = process.env.MOCK_API || '';
       this.get('/data/test.md', () => {
         return new Response(
