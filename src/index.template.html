@@ -45,12 +45,15 @@
     <!-- GrowingIO Analytics code version 2.1 -->
     <!-- Copyright 2015-2018 GrowingIO, Inc. More info available at http://www.growingio.com -->
     <!--    https://docs.growingio.com/v3/developer-manual/sdkintegrated/web-js-sdk/web-sdk-api/websdk-apiv2-->
+    <!--    https://growingio.kf5.com/hc/kb/article/1335457/-->
     <script type='text/javascript'>
       window._gr_ignore_local_rule=true;
       !function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement("script"),tag=t.getElementsByTagName("script")[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,"script","assets.giocdn.com/2.1/gio.js","gio");
       gio('init','b311885b8a4a8079', {});
       //custom page code begin here
       gio('config', {'hashtag':false});
+      gio('track', 'loginSuccess');
+
       //custom page code end here
 
       gio('send');

@@ -14,3 +14,8 @@ declare module '@vue/runtime-core' {
     $PUBLIC_PATH: string;
   }
 }
+declare global {
+  interface Window {
+    gio: any;
+  }
+}

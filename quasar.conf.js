@@ -146,6 +146,16 @@ module.exports = configure(function (/* ctx */) {
       https: false,
       port: 8080,
       open: true, // opens browser window automatically
+      proxy: {
+        '/gio/v1': {
+          target: 'https://www.growingio.com/v1',
+          pathRewrite: { '^/gio/v1': '' },
+        },
+        '/gio/v2': {
+          target: 'https://www.growingio.com/v2',
+          pathRewrite: { '^/gio/v2': '' },
+        },
+      },
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
