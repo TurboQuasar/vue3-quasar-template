@@ -67,7 +67,8 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'history', // available values: 'hash', 'history'
+      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      publicPath: 'vue3-quasar-template',
       env: Object.assign(
         require('dotenv').config({}).parsed,
         require('dotenv').config({
@@ -86,8 +87,8 @@ module.exports = configure(function (/* ctx */) {
       // rtl: false, // https://quasar.dev/options/rtl-support
       // preloadChunks: true,
       showProgress: false,
-      gzip: false,
-      analyze: true,
+      gzip: true,
+      analyze: false,
       sourceMap: process.env.NODE_ENV !== 'production',
 
       // Options below are automatically set depending on the env, set them if you want to override
@@ -96,17 +97,17 @@ module.exports = configure(function (/* ctx */) {
       // https://quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
       chainWebpack(/* chain */ config) {
-        //
-        if (
-          process.env.NODE_ENV === 'production' &&
-          process.env.MIRAGE_ENABLED !== 'true'
-        ) {
-          config.module
-            .rule('exclude-mirage')
-            .test(/node_modules\/miragejs\//)
-            .use('null-loader')
-            .loader('null-loader');
-        }
+        // close mirage
+        // if (
+        //   process.env.NODE_ENV === 'production' &&
+        //   process.env.MIRAGE_ENABLED !== 'true'
+        // ) {
+        //   config.module
+        //     .rule('exclude-mirage')
+        //     .test(/node_modules\/miragejs\//)
+        //     .use('null-loader')
+        //     .loader('null-loader');
+        // }
       },
       extendWebpack(cfg) {
         cfg.resolve.alias = {

@@ -2,7 +2,7 @@
   "name": "vue3-quasar-template",
   "version": "0.0.1",
   "description": "vue3 quasar template",
-  "productName": "cloudMusic",
+  "productName": "vue3 quasar template",
   "author": "gxkai <1378026744@qq.com>",
   "private": true,
   "scripts": {
@@ -10,7 +10,8 @@
     "build": "quasar build",
     "lint": "eslint --fix --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "update": "yarn upgrade-interactive [--latest]"
+    "update": "yarn upgrade-interactive [--latest]",
+    "deploy": "./deploy.sh"
   },
   "dependencies": {
     "@kangc/v-md-editor": "^2.3.3",
