@@ -86,7 +86,7 @@ module.exports = configure(function (/* ctx */) {
       // rtl: false, // https://quasar.dev/options/rtl-support
       // preloadChunks: true,
       showProgress: false,
-      gzip: true,
+      gzip: false,
       analyze: true,
       sourceMap: process.env.NODE_ENV !== 'production',
 
