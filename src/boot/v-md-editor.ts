@@ -13,8 +13,6 @@ VMdEditor.use(vuepressTheme, {
   Prism,
 });
 
-
-
 export default boot(({ app }) => {
   // something to do
   app.use(VMdEditor);

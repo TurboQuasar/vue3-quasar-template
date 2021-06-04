@@ -47,6 +47,7 @@ module.exports = {
     'prettier',
     'prettier/@typescript-eslint',
     'prettier/vue',
+    '@vue/prettier'
   ],
 
   plugins: [
