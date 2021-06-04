@@ -68,7 +68,7 @@ module.exports = configure(function (/* ctx */) {
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
-      publicPath: 'vue3-quasar-template',
+      // publicPath: 'vue3-quasar-template',
       env: Object.assign(
         require('dotenv').config({}).parsed,
         require('dotenv').config({

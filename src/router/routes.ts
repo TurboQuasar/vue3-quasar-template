@@ -95,6 +95,16 @@ export const asyncRoutesChildren: AppRouteModule[] = [
         },
         component: () => import('pages/Components/GIO.vue'),
       },
+      {
+        path: 'cname',
+        name: 'CNAME',
+        meta: {
+          title: 'CNAME 使用',
+          icon: 'grain',
+          keepAlive: true,
+        },
+        component: () => import('pages/Components/CNAME.vue'),
+      },
     ],
   },
 ];

@@ -9,7 +9,7 @@ yarn build
 cd dist/spa
 
 # 部署到自定义域域名
-#echo 'ksgxkai.top' > CNAME
+echo 'quasar.ksgxkai.top' > CNAME
 
 git init
 git add .
