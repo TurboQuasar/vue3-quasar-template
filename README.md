@@ -1,6 +1,6 @@
-# cloudMusic (vue3-quasar-music)
+# vue3-quasar-template
 
-基于 vue3-quasar 的网易云客户端
+vue3 quasar template
 
 ## Install the dependencies
 
@@ -11,19 +11,19 @@ yarn
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 
 ```bash
-quasar dev
+yarn dev
 ```
 
 ### Lint the files
 
 ```bash
-yarn run lint
+yarn  lint
 ```
 
 ### Build the app for production
 
 ```bash
-quasar build
+yarn build
 ```
 
 ### Customize the configuration
