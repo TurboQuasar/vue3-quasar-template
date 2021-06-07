@@ -41,7 +41,7 @@
         <template v-slot:default>
           <q-icon size="1.3rem" v-if="v.icon" :name="v.icon" />
           <div class="line-limit-length">
-            {{ $tc(v.title.split(':')[0]) }}:{{ v.title.split(':')[1] }}
+            {{ translateTitle(v.title) }}
           </div>
           <q-icon
             class="tagView-remove-icon"
@@ -82,6 +82,7 @@
 <script lang="ts">
 import { defineComponent, computed, watch } from 'vue';
 import { useStore } from 'vuex';
+import { translateTitle } from 'utils/TranslateUtil';
 
 export default defineComponent({
   name: 'TagView',
@@ -124,6 +125,7 @@ export default defineComponent({
       removeLeftTagView,
       removeRightTagView,
       removeOthersTagView,
+      translateTitle,
     };
   },
 });

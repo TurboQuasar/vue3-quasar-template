@@ -45,6 +45,29 @@ export const asyncRoutesChildren: AppRouteModule[] = [
     ],
   },
   {
+    path: '/algorithms',
+    name: 'Algorithms',
+    component: Layout,
+    meta: {
+      title: '算法应用',
+      icon: 'apps',
+      isOpen: true,
+      isHidden: false,
+    },
+    children: [
+      {
+        path: 'sku',
+        name: 'Sku',
+        meta: {
+          title: 'sku 算法应用',
+          icon: 'select_all',
+          keepAlive: true,
+        },
+        component: () => import('pages/Algorithms/Sku/Sku.vue'),
+      },
+    ],
+  },
+  {
     path: '/component',
     name: 'Component',
     component: Layout,

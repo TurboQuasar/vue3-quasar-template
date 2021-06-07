@@ -10,7 +10,7 @@
           v-if="v.title"
           class="items-center"
           style="vertical-align: middle"
-          :label="`${$tc(v.title.split(':')[0])}:${v.title.split(':')[1]}`"
+          :label="translateTitle(v.title)"
           :icon="v.icon === '' ? undefined : v.icon"
           :key="i + v.title"
         >
@@ -31,6 +31,7 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, reactive, watch } from 'vue';
 import { useStore } from 'vuex';
+import { translateTitle } from 'utils/TranslateUtil';
 
 export default defineComponent({
   name: 'Breadcrumbs',
@@ -39,6 +40,7 @@ export default defineComponent({
     const breadcrumbs = computed(() => $store.getters['auth/getBreadcrumbs']);
     return {
       breadcrumbs,
+      translateTitle,
     };
   },
 });
