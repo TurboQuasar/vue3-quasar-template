@@ -4,16 +4,16 @@
  */
 
 // Configuration for your app
-// https://quasar.dev/quasar-cli/quasar-conf-js
+// https://v2.quasar.dev/quasar-cli/quasar-conf-js
 
 /* eslint-env node */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { configure } = require('quasar/wrappers');
 const path = require('path');
-const timeStamp = new Date().getTime();
-module.exports = configure(function (/* ctx */) {
+
+module.exports = configure(function (ctx) {
   return {
-    // https://quasar.dev/quasar-cli/supporting-ts
+    // https://v2.quasar.dev/quasar-cli/supporting-ts
     supportTS: {
       tsCheckerConfig: {
         eslint: {
@@ -23,12 +23,12 @@ module.exports = configure(function (/* ctx */) {
       },
     },
 
-    // https://quasar.dev/quasar-cli/prefetch-feature
+    // https://v2.quasar.dev/quasar-cli/prefetch-feature
     // preFetch: true,
 
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
-    // https://quasar.dev/quasar-cli/boot-files
+    // https://v2.quasar.dev/quasar-cli/boot-files
     boot: [
       'axios',
       'swiper',
@@ -41,7 +41,7 @@ module.exports = configure(function (/* ctx */) {
       'echarts',
     ],
 
-    // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css  src/css
+    // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: [
       'app.scss',
       'main.css',
@@ -54,21 +54,19 @@ module.exports = configure(function (/* ctx */) {
     extras: [
       // 'ionicons-v4',
       // 'mdi-v5',
-      // 'fontawesome-v5',
+      'fontawesome-v5',
       // 'eva-icons',
       // 'themify',
       // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
       'roboto-font', // optional, you are not bound to it
-      'fontawesome-v5',
       'material-icons', // optional, you are not bound to it
     ],
 
-    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
+    // Full list of options: https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
-      // publicPath: 'vue3-quasar-template',
       env: Object.assign(
         require('dotenv').config({}).parsed,
         require('dotenv').config({
@@ -76,38 +74,25 @@ module.exports = configure(function (/* ctx */) {
         }).parsed
       ),
       // transpile: false,
-      // vueCompiler: true,
+
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).
       // Applies only if "transpile" is set to true.
-      // transpileDependencies: [
-      //   '@kangc'
-      // ],
+      // transpileDependencies: [],
 
-      // rtl: false, // https://quasar.dev/options/rtl-support
+      // rtl: true, // https://v2.quasar.dev/options/rtl-support
       // preloadChunks: true,
-      showProgress: false,
-      gzip: true,
-      analyze: false,
-      sourceMap: process.env.NODE_ENV !== 'production',
+      // showProgress: false,
+      // gzip: true,
+      // analyze: true,
 
       // Options below are automatically set depending on the env, set them if you want to override
-      extractCSS: false,
+      // extractCSS: false,
 
-      // https://quasar.dev/quasar-cli/handling-webpack
+      // https://v2.quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-      chainWebpack(/* chain */ config) {
-        // close mirage
-        // if (
-        //   process.env.NODE_ENV === 'production' &&
-        //   process.env.MIRAGE_ENABLED !== 'true'
-        // ) {
-        //   config.module
-        //     .rule('exclude-mirage')
-        //     .test(/node_modules\/miragejs\//)
-        //     .use('null-loader')
-        //     .loader('null-loader');
-        // }
+      chainWebpack(/* chain */) {
+        //
       },
       extendWebpack(cfg) {
         cfg.resolve.alias = {
@@ -123,64 +108,40 @@ module.exports = configure(function (/* ctx */) {
           models: path.resolve(__dirname, './src/models'),
           enums: path.resolve(__dirname, './src/enums'),
           classes: path.resolve(__dirname, './src/classes'),
+          i18n: path.resolve(__dirname, './src/i18n'),
         };
-        // for i18n resources (json/json5/yaml)
-        cfg.module.rules.push({
-          test: /\.(json5?|ya?ml)$/, // target json, json5, yaml and yml files
-          type: 'javascript/auto',
-          // Use `Rule.include` to specify the files of locale messages to be pre-compiled
-          include: [path.resolve(__dirname, './src/i18n')],
-          loader: '@intlify/vue-i18n-loader',
-        });
-
-        // for i18n custom block
-        cfg.module.rules.push({
-          resourceQuery: /blockType=i18n/,
-          type: 'javascript/auto',
-          loader: '@intlify/vue-i18n-loader',
-        });
-      },
-
-      // Webpack 函数式配置
-      configureWebpack: (config) => {
-        config.module.rules = [
-          ...config.module.rules,
-          {
-            test: /\.md$/i,
-            loader: 'raw-loader',
-          },
-        ];
-        // 生产环境配置
-        if (process.env.NODE_ENV === 'production') {
-          // 消除 console 输出信息
-          config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true;
-
-          // Gzip 压缩
-          const CompressionPlugin = require('compression-webpack-plugin');
-          config.plugins.push(
-            new CompressionPlugin({
-              algorithm: 'gzip', //
-              test: /\.(js|css|woff|woff2|svg)$/, // 哪些文件会被压缩
-              threshold: 10240, // 对超过10k的数据压缩
-              deleteOriginalAssets: false, // 不删除压缩前的文件，如果浏览器不支持 Gzip ,则会加载源文件
-              minRatio: 0.8, // 压缩比大于 0.8 的文件将不会被压缩
-            })
-          );
-
-          // 将 js 文件夹添加时间戳，这样浏览器不会加载上个版本缓存的代码
-          config.output.filename = `js/[name].${timeStamp}.js`;
-          config.output.chunkFilename = `js/[name].${timeStamp}.js`;
-        } else {
-          // 开发环境配置
-        }
       },
     },
+    configureWebpack: (config) => {
+      // 生产环境配置
+      if (process.env.NODE_ENV === 'production') {
+        // 消除 console 输出信息
+        config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true;
 
-    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
+        // Gzip 压缩
+        const CompressionPlugin = require('compression-webpack-plugin');
+        config.plugins.push(
+          new CompressionPlugin({
+            algorithm: 'gzip', //
+            test: /\.(js|css|woff|woff2|svg)$/, // 哪些文件会被压缩
+            threshold: 10240, // 对超过10k的数据压缩
+            deleteOriginalAssets: false, // 不删除压缩前的文件，如果浏览器不支持 Gzip ,则会加载源文件
+            minRatio: 0.8, // 压缩比大于 0.8 的文件将不会被压缩
+          })
+        );
+
+        // 将 js 文件夹添加时间戳，这样浏览器不会加载上个版本缓存的代码
+        config.output.filename = `js/[name].${timeStamp}.js`;
+        config.output.chunkFilename = `js/[name].${timeStamp}.js`;
+      } else {
+        // 开发环境配置
+      }
+    },
+    // Full list of options: https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
       port: 8080,
-      open: true, // opens browser window automatically
+      open: false, // opens browser window automatically
       proxy: {
         '/gio/v1': {
           target: 'https://www.growingio.com/v1',
@@ -225,22 +186,47 @@ module.exports = configure(function (/* ctx */) {
     },
 
     // animations: 'all', // --- includes all animations
-    // https://quasar.dev/options/animations
+    // https://v2.quasar.dev/options/animations
     animations: [],
 
-    // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
+    // https://v2.quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
       pwa: false,
+
+      // manualStoreHydration: true,
+      // manualPostHydrationTrigger: true,
+
+      prodPort: 3000, // The default port that the production server should use
+      // (gets superseded if process.env.PORT is specified at runtime)
+
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      // Tell browser when a file from the server should expire from cache (in ms)
+
+      chainWebpackWebserver(/* chain */) {
+        //
+      },
+
+      middlewares: [
+        ctx.prod ? 'compression' : '',
+        'render', // keep this as last one
+      ],
     },
 
-    // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
+    // https://v2.quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
+
+      // for the custom service worker ONLY (/src-pwa/custom-service-worker.[js|ts])
+      // if using workbox in InjectManifest mode
+      chainWebpackCustomSW(/* chain */) {
+        //
+      },
+
       manifest: {
-        name: 'template',
-        short_name: 'template',
-        description: 'vue3 quasar template',
+        name: 'Quasar App',
+        short_name: 'Quasar App',
+        description: 'A Quasar Framework app',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
@@ -275,17 +261,17 @@ module.exports = configure(function (/* ctx */) {
       },
     },
 
-    // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
+    // Full list of options: https://v2.quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
     },
 
-    // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
+    // Full list of options: https://v2.quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
     capacitor: {
       hideSplashscreen: true,
     },
 
-    // Full list of options: https://quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
+    // Full list of options: https://v2.quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
     electron: {
       bundler: 'packager', // 'packager' or 'builder'
 
@@ -303,7 +289,7 @@ module.exports = configure(function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'vue3-quasar-template',
+        appId: 'quasar2',
       },
 
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain

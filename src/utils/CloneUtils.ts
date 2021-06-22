@@ -3,7 +3,7 @@
  * @param obj
  * @returns {*}
  */
-export function getFirst(obj) {
+export function getFirst(obj: Record<any, any>) {
   for (const key in obj) {
     return obj[key];
   }

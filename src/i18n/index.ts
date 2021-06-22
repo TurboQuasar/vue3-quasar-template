@@ -1,6 +1,6 @@
 // https://github.com/quasarframework/quasar/blob/vue3-work/ui/lang
-import { enUS } from './en-us';
-import { zhCN } from './zh-cn';
+import { enUS } from 'i18n/en-us';
+import { zhCN } from 'i18n/zh-cn';
 
 export default {
   'en-US': enUS,

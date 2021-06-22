@@ -1,9 +1,9 @@
 {
-  "name": "vue3-quasar-template",
+  "name": "quasar2",
   "version": "0.0.1",
-  "description": "vue3 quasar template",
-  "productName": "vue3 quasar template",
-  "author": "gxkai <1378026744@qq.com>",
+  "description": "A Quasar Framework app",
+  "productName": "Quasar App",
+  "author": "gxkai <30716965+gxkai@users.noreply.github.com>",
   "private": true,
   "scripts": {
     "dev": "quasar dev",
@@ -15,44 +15,50 @@
   },
   "dependencies": {
     "@kangc/v-md-editor": "^2.3.3",
-    "@quasar/extras": "^1.10.4",
+    "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "echarts": "^5.1.1",
     "faker": "^5.5.3",
     "lodash": "^4.17.21",
     "miragejs": "^0.1.41",
-    "quasar": "^2.0.0-beta.12",
+    "prismjs": "^1.23.0",
+    "quasar": "^2.0.0",
     "swiper": "^6.4.15",
     "typescript-json-serializer": "^3.3.0",
     "vue-carousel-card": "^1.0.6",
     "vue-echarts": "^6.0.0-rc.5",
-    "vue-i18n": "^9.1.6",
+    "vue-i18n": "^9.0.0-beta.0",
     "vue3-count-to": "^1.0.9",
+    "vuex": "^4.0.1",
     "vuex-persistedstate": "^4.0.0-beta.3",
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.13.14",
+    "@quasar/app": "^3.0.0",
+    "@types/node": "^10.17.15",
+    "@types/prismjs": "^1.16.5",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^7.0.0",
+    "raw-loader": "^4.0.2",
+
+
     "@intlify/vue-i18n-loader": "^2.1.0",
-    "@quasar/app": "^3.0.0-beta.15",
     "@types/faker": "^5.5.5",
     "@types/lodash": "^4.14.169",
-    "@types/node": "^10.17.15",
     "@types/swiper": "^5.4.2",
-    "@typescript-eslint/eslint-plugin": "^4.9.0",
-    "@typescript-eslint/parser": "^4.9.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.0.1",
     "compression-webpack-plugin": "^1.1.12",
-    "dotenv": "^9.0.2",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-vue": "^7.0.0",
     "miragejs": "^0.1.41",
     "null-loader": "^4.0.1",
-    "prettier": "^2.3.0",
-    "raw-loader": "^4.0.2"
+    "prettier": "^2.3.0"
   },
   "browserslist": [
     "last 10 Chrome versions",
@@ -66,7 +72,7 @@
     "last 5 Opera versions"
   ],
   "engines": {
-    "node": ">= 10.18.1",
+    "node": ">= 12.22.1",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
   }

@@ -17,11 +17,11 @@ module.exports = {
     project: resolve(__dirname, './tsconfig.json'),
     tsconfigRootDir: __dirname,
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
-    sourceType: 'module', // Allows for the use of imports
+    sourceType: 'module' // Allows for the use of imports
   },
 
   env: {
-    browser: true,
+    browser: true
   },
 
   // Rules order is important, please avoid shuffling them
@@ -45,8 +45,6 @@ module.exports = {
     // https://github.com/prettier/eslint-config-prettier#installation
     // usage with Prettier, provided by 'eslint-config-prettier'.
     'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/vue',
     '@vue/prettier'
   ],
 
@@ -64,16 +62,16 @@ module.exports = {
   ],
 
   globals: {
-    ga: true, // Google Analytics
-    cordova: true,
-    __statics: true,
-    __QUASAR_SSR__: true,
-    __QUASAR_SSR_SERVER__: true,
-    __QUASAR_SSR_CLIENT__: true,
-    __QUASAR_SSR_PWA__: true,
-    process: true,
-    Capacitor: true,
-    chrome: true,
+    ga: 'readonly', // Google Analytics
+    cordova: 'readonly',
+    __statics: 'readonly',
+    __QUASAR_SSR__: 'readonly',
+    __QUASAR_SSR_SERVER__: 'readonly',
+    __QUASAR_SSR_CLIENT__: 'readonly',
+    __QUASAR_SSR_PWA__: 'readonly',
+    process: 'readonly',
+    Capacitor: 'readonly',
+    chrome: 'readonly'
   },
 
   // add your custom rules here
@@ -109,5 +107,5 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': 'off',
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-  },
-};
+  }
+}

@@ -16,7 +16,8 @@
       "mock/*": ["src/mock/*"],
       "models/*": ["src/models/*"],
       "enums/*": ["src/enums/*"],
-      "classes/*": ["src/classes/*"]
+      "classes/*": ["src/classes/*"],
+      "i18n/*": ["src/i18n/*"],
     },
   }
 }
