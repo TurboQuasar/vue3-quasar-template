@@ -16,8 +16,8 @@
           dense
           round
           aria-label="Menu"
-          :icon="leftDrawerOpen === true ? 'menu_open' : 'menu'"
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          :icon="miniState === true ? 'menu_open' : 'menu'"
+          @click="miniState = !miniState"
         />
         <!-- toolbar - title -->
         <toolbar-title />
@@ -39,8 +39,12 @@
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
+      :mini="miniState"
+      @mouseover="miniState = false"
       content-class="bg-white"
       :width="240"
+      :breakpoint="500"
+      bordered
     >
       <base-menu />
     </q-drawer>
@@ -91,6 +95,7 @@ export default {
       keepAliveList: computed(() => $store.getters['auth/getKeepAliveList']),
       key: computed(() => $route.fullPath),
       leftDrawerOpen: ref(false),
+      miniState: ref(true),
     };
   },
 };

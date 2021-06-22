@@ -59,12 +59,9 @@ export interface RouteMeta {
   itemLabel?: string;
 }
 
-// @ts-ignore
-export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
-  name: string;
+export interface AppRouteRecordRaw
+  extends Omit<RouteRecordRaw, 'meta' | 'children'> {
   meta: RouteMeta;
-  component?: Component | string;
-  components?: Component;
   children?: AppRouteRecordRaw[];
   props?: Recordable;
   fullPath?: string;
