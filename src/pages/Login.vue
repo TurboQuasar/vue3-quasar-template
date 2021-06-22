@@ -5,15 +5,8 @@
   >
     <div
       class="row base-card-shadow electron-hide"
-      style="width: 60vw; min-width: 300px"
+      style="width: 30vw; min-width: 300px"
     >
-      <div
-        class="col-6 flex justify-center items-center"
-        v-show="$q.screen.gt.sm"
-      >
-        <q-skeleton type="text" height="70%" width="50%" v-if="!isLottieF" />
-      </div>
-      <q-separator vertical inset v-if="$q.screen.gt.sm" />
       <div class="col flex justify-center items-center">
         <q-card
           square
@@ -96,7 +89,6 @@ export default defineComponent({
     const password = ref('');
     const loading = ref(false);
     const percentage = ref(0);
-    const isLottieF = ref(false);
 
     const $router = useRouter();
     const $store = useStore();
@@ -139,7 +131,6 @@ export default defineComponent({
       password,
       loading,
       percentage,
-      isLottieF,
     };
   },
 });
