@@ -109,16 +109,6 @@ export const asyncRoutesChildren: AppRouteModule[] = [
         component: () => import('pages/Components/TsMarkdown.vue'),
       },
       {
-        path: 'gio',
-        name: 'GIO',
-        meta: {
-          title: 'GIO 使用',
-          icon: 'grain',
-          keepAlive: true,
-        },
-        component: () => import('pages/Components/GIO.vue'),
-      },
-      {
         path: 'cname',
         name: 'CNAME',
         meta: {

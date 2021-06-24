@@ -15,7 +15,5 @@ declare module '@vue/runtime-core' {
   }
 }
 declare global {
-  interface Window {
-    gio: any;
-  }
+  interface Window {}
 }

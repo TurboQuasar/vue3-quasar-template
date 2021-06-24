@@ -11,7 +11,7 @@ export default defineComponent({
     const $q = useQuasar();
     //添加iconfont图标映射
     $q.iconMapFn = (iconName) => {
-      if (iconName.startsWith('icon') === true) {
+      if (iconName.startsWith('icon')) {
         // we strip the "app:" part
         return {
           cls: 'icon iconfont ' + iconName,

@@ -24,7 +24,7 @@ const sessionState = createPersistedState({
   storage: window.sessionStorage,
 });
 const localState = createPersistedState({
-  key: 'vqm',
+  key: 'vqt',
   paths: ['auth.lang'],
   storage: window.localStorage,
 });
