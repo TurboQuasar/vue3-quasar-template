@@ -4,7 +4,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useQuasar } from 'quasar';
-
+const myIcons = {
+  'app:logo': 'img:/icons/logo.svg',
+};
 export default defineComponent({
   name: 'App',
   setup() {
@@ -16,6 +18,10 @@ export default defineComponent({
         return {
           cls: 'icon iconfont ' + iconName,
         };
+      }
+      const icon = myIcons[iconName];
+      if (icon !== void 0) {
+        return { icon: icon };
       }
     };
   },

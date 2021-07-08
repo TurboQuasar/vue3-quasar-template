@@ -8,7 +8,7 @@ import {
   useRouter,
 } from 'vue-router';
 import { StateInterface } from '../store';
-import { constantRoutes, LoginRoute } from './routes';
+import { constantRoutes, HomeRoute, LoginRoute } from './routes';
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;
@@ -17,7 +17,7 @@ import { constantRoutes, LoginRoute } from './routes';
  * async/await or return a Promise which resolves
  * with the Router instance.
  */
-const WHITE_NAME_LIST = [LoginRoute.name];
+const WHITE_NAME_LIST = [LoginRoute.name, HomeRoute.name];
 const createHistory = process.env.SERVER
   ? createMemoryHistory
   : process.env.VUE_ROUTER_MODE === 'history'

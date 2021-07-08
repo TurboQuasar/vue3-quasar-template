@@ -6,7 +6,7 @@ export const config = {
   // 根路由
   $PUBLIC_PATH: process.env.VUE_ROUTER_BASE,
   // 浏览器 title
-  $title: ' | Vue Quasar',
+  $title: ' | 链证宝',
   // 侧边栏风格
   $SideBar: 'hHh lpR fFf',
   // axios 中请求基地址，如果需要请在 axios/axiosConfig.js 中打开，下面是跨域代理示例

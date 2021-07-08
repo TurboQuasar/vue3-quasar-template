@@ -3,120 +3,34 @@ import Layout from 'components/Layout/Layout.vue';
 
 export const asyncRoutesChildren: AppRouteModule[] = [
   {
-    path: '/',
-    name: 'Home',
+    path: '/main',
+    name: 'main',
     meta: {
-      title: 'home',
-      icon: 'home',
-      keepAlive: true,
+      title: '主页',
+      icon: '',
+      keepAlive: false,
     },
-    component: () => import('pages/Home/Home.vue'),
+    component: () => import('pages/Main/Index.vue'),
   },
   {
-    path: '/table-detail',
-    name: 'tableDetail',
+    path: '/contract',
+    name: 'contract',
     meta: {
-      title: 'treatsDetail',
-      icon: 'blur_linear',
-      isHidden: true,
-    },
-    component: () => import('pages/Home/TableDetail.vue'),
-  },
-  {
-    path: '/start',
-    name: 'Start',
-    meta: {
-      title: '快速起步',
-      icon: 'design_services',
-      keepAlive: true,
+      title: '合同管理',
+      icon: '',
+      keepAlive: false,
+      hideChildrenInMenu: true,
     },
     component: Layout,
     children: [
       {
-        path: 'getting-started',
-        name: 'GettingStarted',
+        path: '',
+        name: 'contract',
         meta: {
-          title: '基础配置',
-          icon: 'tune',
-          keepAlive: true,
+          title: '合同管理',
+          icon: '',
         },
-        component: () => import('pages/Router/GettingStarted.vue'),
-      },
-    ],
-  },
-  {
-    path: '/algorithms',
-    name: 'Algorithms',
-    component: Layout,
-    meta: {
-      title: '算法应用',
-      icon: 'apps',
-      isOpen: true,
-      isHidden: false,
-    },
-    children: [
-      // {
-      //   path: 'sku',
-      //   name: 'Sku',
-      //   meta: {
-      //     title: 'sku 算法应用',
-      //     icon: 'select_all',
-      //     keepAlive: true,
-      //   },
-      //   component: () => import('pages/Algorithms/Sku/Sku.vue'),
-      // },
-    ],
-  },
-  {
-    path: '/component',
-    name: 'Component',
-    component: Layout,
-    meta: {
-      title: '组件说明',
-      icon: 'apps',
-      isOpen: true,
-      isHidden: false,
-    },
-    children: [
-      {
-        path: 'keepalive-doc',
-        name: 'KeepaliveDoc',
-        meta: {
-          title: 'keep-alive 缓存',
-          icon: 'select_all',
-          keepAlive: true,
-        },
-        component: () => import('pages/Components/KeepaliveDoc.vue'),
-      },
-      {
-        path: 'icon',
-        name: 'Icon',
-        meta: {
-          title: 'icon 集合',
-          icon: 'grain',
-          keepAlive: true,
-        },
-        component: () => import('pages/Components/Icon.vue'),
-      },
-      {
-        path: 'ts-markdown',
-        name: 'TsMarkdown',
-        meta: {
-          title: 'ts markdown 使用',
-          icon: 'grain',
-          keepAlive: true,
-        },
-        component: () => import('pages/Components/TsMarkdown.vue'),
-      },
-      {
-        path: 'cname',
-        name: 'CNAME',
-        meta: {
-          title: 'CNAME 使用',
-          icon: 'grain',
-          keepAlive: true,
-        },
-        component: () => import('pages/Components/CNAME.vue'),
+        component: () => import('pages/Contract/Index.vue'),
       },
     ],
   },
@@ -129,7 +43,7 @@ export const asyncRoutes: AppRouteModule[] = [
       title: '',
       icon: '',
     },
-    redirect: '/home',
+    redirect: '/main',
     component: () => import('layouts/MainLayout.vue'),
     children: asyncRoutesChildren,
   },
@@ -143,6 +57,112 @@ export const LoginRoute: AppRouteRecordRaw = {
     title: '',
   },
 };
+export const HomeRoute: AppRouteRecordRaw = {
+  path: '/home',
+  name: 'home',
+  meta: {
+    title: '首页',
+    icon: '',
+    keepAlive: false,
+    isHidden: true,
+  },
+  redirect: '/home/index',
+  component: () => import('layouts/HomeLayout.vue'),
+  children: [
+    {
+      path: 'index',
+      name: 'home',
+      meta: {
+        title: '首页',
+        icon: '',
+        keepAlive: true,
+      },
+      component: () => import('pages/Home/Index.vue'),
+    },
+    {
+      path: 'solution',
+      name: 'solution',
+      meta: {
+        title: '解决方案',
+        icon: '',
+        keepAlive: true,
+      },
+      component: () => import('pages/Solution/Index.vue'),
+    },
+    {
+      path: 'check',
+      name: 'check',
+      meta: {
+        title: '合同查验',
+        icon: '',
+        keepAlive: true,
+      },
+      component: () => import('pages/Check/Index.vue'),
+    },
+    {
+      path: 'developer',
+      name: 'developer',
+      meta: {
+        title: '开发者',
+        icon: '',
+        keepAlive: true,
+      },
+      component: () => import('pages/Developer/Index.vue'),
+    },
+    {
+      path: 'help',
+      name: 'help',
+      meta: {
+        title: '帮助中心',
+        icon: '',
+        keepAlive: true,
+      },
+      component: Layout,
+      children: [
+        {
+          path: 'problem',
+          name: 'problem',
+          meta: {
+            title: '常见问题',
+            icon: '',
+            keepAlive: true,
+          },
+          component: () => import('pages/Problem/Index.vue'),
+        },
+        {
+          path: 'newer',
+          name: 'newer',
+          meta: {
+            title: '新手上路',
+            icon: '',
+            keepAlive: true,
+          },
+          component: () => import('pages/Newer/Index.vue'),
+        },
+        {
+          path: 'protocol',
+          name: 'protocol',
+          meta: {
+            title: '用户协议',
+            icon: '',
+            keepAlive: true,
+          },
+          component: () => import('pages/Protocol/Index.vue'),
+        },
+        {
+          path: 'privacy',
+          name: 'privacy',
+          meta: {
+            title: '隐私政策',
+            icon: '',
+            keepAlive: true,
+          },
+          component: () => import('pages/Privacy/Index.vue'),
+        },
+      ],
+    },
+  ],
+};
 // Always leave this as last one,
 // but you can also remove it
 export const ErrorRoute: AppRouteRecordRaw = {
@@ -153,4 +173,8 @@ export const ErrorRoute: AppRouteRecordRaw = {
     title: '',
   },
 };
-export const constantRoutes: AppRouteRecordRaw[] = [LoginRoute, ErrorRoute];
+export const constantRoutes: AppRouteRecordRaw[] = [
+  LoginRoute,
+  HomeRoute,
+  ErrorRoute,
+];

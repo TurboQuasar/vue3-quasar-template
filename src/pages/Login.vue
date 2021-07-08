@@ -1,12 +1,6 @@
 <template>
-  <div
-    class="flex justify-center items-center q-electron-drag"
-    style="height: 100%"
-  >
-    <div
-      class="row base-card-shadow electron-hide"
-      style="width: 30vw; min-width: 300px"
-    >
+  <div class="flex justify-center items-center" style="height: 100%">
+    <div class="row base-card-shadow" style="width: 30vw; min-width: 300px">
       <div class="col flex justify-center items-center">
         <q-card
           square

@@ -4,35 +4,19 @@
     <q-header class="bg-white text-grey-8 row align-center">
       <!-- 状态栏 -->
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          aria-label="Menu"
-          :icon="leftDrawerOpen === true ? 'menu_open' : 'menu'"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
         <!-- toolbar - title -->
         <toolbar-title />
         <q-space />
-        <!-- 右侧元素 -->
-        <toolbar-item-right />
+        <home-menu />
+        <q-space />
       </q-toolbar>
     </q-header>
     <!-- HEADER END -->
-
-    <!-- slideBar START -->
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      :width="160"
-      :mini="miniState"
-      @mouseover="miniState = false"
-    >
-      <base-menu />
-    </q-drawer>
-    <!-- slideBar END -->
-
+    <q-footer>
+      <q-toolbar>
+        <q-toolbar-title>Footer</q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
     <!-- container START -->
     <!--    why not  keepAlive && suspense ?-->
     <!--    https://github.com/vuejs/vue-next/issues/3652-->
@@ -59,10 +43,12 @@ import { config } from 'src/config';
 import { useStore } from 'vuex';
 import { computed, ref, onErrorCaptured } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import HomeMenu from 'components/Menu/HomeMenu.vue';
 
 export default {
   name: 'MainLayout',
   components: {
+    HomeMenu,
     ToolbarItemRight,
     ToolbarTitle,
     Breadcrumbs,
@@ -77,8 +63,6 @@ export default {
       Max_keepAlive: config.$Max_KeepAlive,
       keepAliveList: computed(() => $store.getters['auth/getKeepAliveList']),
       key: computed(() => $route.fullPath),
-      leftDrawerOpen: ref(false),
-      miniState: ref(false),
     };
   },
 };

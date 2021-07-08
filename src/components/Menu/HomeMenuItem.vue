@@ -24,7 +24,6 @@
           clickable
           v-ripple
           :key="index"
-          :exact="item.path === '/'"
           :class="baseItemClass"
           :inset-level="initLevel"
           :style="isWeChart ? ' line-height: normal' : ''"
@@ -32,49 +31,59 @@
           :to="handleLink(basePath, item.path)"
           @click="externalLink(basePath, item.path)"
         >
-          <!--          隐藏图标-->
-          <!--          <q-item-section avatar>-->
-          <!--            <q-icon :name="item.meta.icon" v-if="item.meta.icon" />-->
-          <!--          </q-item-section>-->
           <q-item-section>
             {{ item.meta.title }}
           </q-item-section>
         </q-item>
-
-        <!-- 有孩子 -->
-        <q-expansion-item
-          v-else
-          :duration="duration"
-          :class="baseItemClassWithNoChildren(item.path)"
-          :default-opened="item.meta.isOpen"
-          :header-inset-level="initLevel"
-          :key="item.path"
-          :icon="item.meta.icon"
-          :label="item.meta.title"
-          :style="isWeChart ? ' line-height: normal' : ''"
-        >
-          <!-- 菜单项缩进 + 0.2 ; 背景色深度 + 1 ; 如果上级菜单路径存在，则拼接上级菜单路径 -->
-          <base-menu-item
-            :my-router="item.children"
-            :init-level="initLevel + 0.2"
-            :bg-color-level="bgColorLevel + 1"
-            :bg-color="bgColor"
-            :base-path="
-              basePath === undefined ? item.path : basePath + '/' + item.path
-            "
-          />
-        </q-expansion-item>
+        <q-btn v-else round flat>
+          <q-menu
+            style="min-width: 140px; transform: translate3d(-10px, 12px, 0)"
+            v-model="showMenu"
+          >
+            <q-list>
+              <q-item
+                clickable
+                v-ripple
+                :class="baseItemClass"
+                :inset-level="initLevel"
+                :style="isWeChart ? ' line-height: normal' : ''"
+                active-class="sub-item-active"
+                class="text-center"
+                :to="handleLink(basePath + '/' + item.path, i.path)"
+                @click="externalLink(basePath + '/' + item.path, i.path)"
+                v-for="i in item.children"
+                :key="i.name"
+              >
+                <q-item-section>
+                  {{ i.meta.title }}
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+          <q-item
+            v-ripple
+            :active="$route.path.startsWith(basePath + '/' + item.path)"
+            :class="baseItemClass"
+            :inset-level="initLevel"
+            :style="isWeChart ? ' line-height: normal' : ''"
+            active-class="base-item-active"
+          >
+            <q-item-section>
+              {{ item.meta.title }}
+            </q-item-section>
+          </q-item>
+        </q-btn>
       </template>
     </template>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 export default defineComponent({
-  name: 'base-menu-item',
+  name: 'homeMenuItem',
   props: [
     'myRouter',
     'initLevel',
@@ -142,6 +151,7 @@ export default defineComponent({
       baseItemClassWithNoChildren,
       isWeChart,
       baseItemClass,
+      showMenu: ref(false),
     };
   },
 });
@@ -169,12 +179,17 @@ $ACTIVE_BACKGROUND: #ffffff;
   &:after {
     content: '';
     position: absolute;
-    width: 2px;
-    height: 100%;
+    width: 100%;
+    height: 2px;
     background: $ACTIVE_COLOR !important;
-    top: -0.5px;
+    top: 100%;
     left: 0;
   }
+}
+
+.sub-item-active {
+  color: $ACTIVE_COLOR !important;
+  background: $ACTIVE_BACKGROUND;
 }
 .base-menu-item {
   .q-item__section {

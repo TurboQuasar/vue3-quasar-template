@@ -21,8 +21,8 @@ export default ({ app, router, store }) => {
     // There is a token indicating that you have logged in
     if (token) {
       // You cannot access the login interface after logging in
-      if (to.path === '/login') {
-        next({ path: '/' });
+      if (to.path === '/') {
+        next({ path: '/main' });
       }
       // There is user authority, and the route is not empty, then let go
       if (role && store.getters['auth/getRoutes'].length) {
@@ -39,13 +39,14 @@ export default ({ app, router, store }) => {
     } else {
       // go to a route that does not require authorization
       if (
-        constantRoutes.some((item) => {
-          return item.path === to.path;
-        })
+        // constantRoutes.some((item) => {
+        //   return item.path === to.path;
+        // })
+        getIsMatchRoute(constantRoutes, to)
       ) {
         next();
       } else {
-        next({ path: '/login' });
+        next({ path: '/home' });
       }
     }
   });
@@ -55,6 +56,16 @@ export default ({ app, router, store }) => {
     LoadingBar.stop();
   });
 };
+
+function getIsMatchRoute(arr, route) {
+  return arr.some((item) => {
+    if (item?.children?.length) {
+      return getIsMatchRoute(item.children, route);
+    } else {
+      return item.name === route.name;
+    }
+  });
+}
 
 /**
  * Processing tagView and breadcrumbs

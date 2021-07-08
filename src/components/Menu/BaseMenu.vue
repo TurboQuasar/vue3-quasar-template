@@ -11,9 +11,6 @@
           :bg-color-level="1"
         />
       </q-list>
-
-      <!-- 底部说明 -->
-      <!--      <bottom-link />-->
     </div>
   </q-scroll-area>
 </template>
