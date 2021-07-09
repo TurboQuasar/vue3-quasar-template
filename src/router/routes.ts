@@ -116,6 +116,7 @@ export const HomeRoute: AppRouteRecordRaw = {
         title: '帮助中心',
         icon: '',
         keepAlive: true,
+        isOpen: false,
       },
       component: Layout,
       children: [
@@ -160,6 +161,16 @@ export const HomeRoute: AppRouteRecordRaw = {
           component: () => import('pages/Privacy/Index.vue'),
         },
       ],
+    },
+    {
+      path: 'download',
+      name: 'download',
+      meta: {
+        title: '下载中心',
+        icon: '',
+        keepAlive: true,
+      },
+      component: () => import('pages/Download/Index.vue'),
     },
   ],
 };

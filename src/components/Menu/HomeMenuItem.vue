@@ -7,7 +7,7 @@
 -->
 <template>
   <div class="base-menu-item">
-    <template v-for="(item, index) in myRouter">
+    <template v-for="item in newRouter">
       <template v-if="item.meta.isHidden !== true">
         <q-item-label
           v-if="item.meta.itemLabel"
@@ -23,7 +23,7 @@
           v-if="!item.children || item.meta.hideChildrenInMenu"
           clickable
           v-ripple
-          :key="index"
+          :key="item.name"
           :class="baseItemClass"
           :inset-level="initLevel"
           :style="isWeChart ? ' line-height: normal' : ''"
@@ -35,10 +35,15 @@
             {{ item.meta.title }}
           </q-item-section>
         </q-item>
-        <q-btn v-else round flat>
+        <q-btn
+          v-else
+          flat
+          :key="item.name"
+          class="q-pa-none text-weight-regular"
+        >
           <q-menu
             style="min-width: 140px; transform: translate3d(-10px, 12px, 0)"
-            v-model="showMenu"
+            @update:model-value="(value) => aa(item, value)"
           >
             <q-list>
               <q-item
@@ -68,7 +73,11 @@
             :style="isWeChart ? ' line-height: normal' : ''"
             active-class="base-item-active"
           >
-            <q-item-section>
+            <q-item-section
+              :no-wrap="true"
+              class="icon-arrow"
+              :class="{ 'icon-arrow--reverse': item.meta.isOpen }"
+            >
               {{ item.meta.title }}
             </q-item-section>
           </q-item>
@@ -79,7 +88,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent, reactive, ref, toRefs } from 'vue';
 import { useRoute } from 'vue-router';
 
 export default defineComponent({
@@ -151,14 +160,17 @@ export default defineComponent({
       baseItemClassWithNoChildren,
       isWeChart,
       baseItemClass,
-      showMenu: ref(false),
+      newRouter: reactive(props.myRouter),
+      aa: function (item, value) {
+        item.meta.isOpen = value;
+      },
     };
   },
 });
 </script>
 <style lang="scss">
 /* item 颜色 */
-$ITEM_COLOR: #2c3e50;
+$ITEM_COLOR: $gray-400;
 
 /* item 激活时颜色 */
 $ACTIVE_COLOR: $yellow-;
@@ -166,6 +178,8 @@ $ACTIVE_BACKGROUND: #ffffff;
 
 .base-item-class {
   color: $ITEM_COLOR !important;
+  font-size: 14px !important;
+  margin-left: 20px;
 }
 /* item 被激活时父菜单的样式 */
 .baseRootItemActive {
@@ -194,6 +208,28 @@ $ACTIVE_BACKGROUND: #ffffff;
 .base-menu-item {
   .q-item__section {
     text-align: center;
+  }
+}
+</style>
+<style lang="scss" scoped>
+.icon-arrow {
+  position: relative;
+  &:after {
+    position: absolute;
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-top: 2px solid;
+    border-right: 2px solid;
+    transform: translateX(calc(100% + 6px)) translateY(100%) rotate(135deg);
+    right: 0;
+    top: 0;
+    transition: all 1s ease 0s;
+  }
+  &--reverse {
+    &:after {
+      transform: translateX(calc(100% + 6px)) translateY(150%) rotate(-45deg);
+    }
   }
 }
 </style>
