@@ -1,10 +1,10 @@
 <template>
-  <base-content class="bg-232323 login-register">
-    <div class="full-width full-height row flex justify-center">
+  <div class="bg-232323 login-register full-height">
+    <div class="full-width full-height row flex justify-center items-center">
       <q-icon name="app:login-register" class="icon-login-register" />
       <l-r />
     </div>
-  </base-content>
+  </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
