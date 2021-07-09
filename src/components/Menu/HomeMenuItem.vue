@@ -9,15 +9,6 @@
   <div class="base-menu-item">
     <template v-for="item in newRouter">
       <template v-if="item.meta.isHidden !== true">
-        <q-item-label
-          v-if="item.meta.itemLabel"
-          header
-          class="text-weight-bold text-uppercase"
-          :key="item.meta.itemLabel"
-        >
-          {{ item.meta.itemLabel }}
-        </q-item-label>
-
         <!-- 没有可显示孩子或者隐藏子菜单 -->
         <q-item
           v-if="!item.children || item.meta.hideChildrenInMenu"
@@ -25,6 +16,7 @@
           v-ripple
           :key="item.name"
           :class="baseItemClass"
+          class="q-ml-md"
           :inset-level="initLevel"
           :style="isWeChart ? ' line-height: normal' : ''"
           active-class="base-item-active"
@@ -39,7 +31,7 @@
           v-else
           flat
           :key="item.name"
-          class="q-pa-none text-weight-regular"
+          class="q-pa-none text-weight-regular q-ml-md"
         >
           <q-menu
             style="min-width: 140px; transform: translate3d(-10px, 12px, 0)"
@@ -179,7 +171,6 @@ $ACTIVE_BACKGROUND: #ffffff;
 .base-item-class {
   color: $ITEM_COLOR !important;
   font-size: 14px !important;
-  margin-left: 20px;
 }
 /* item 被激活时父菜单的样式 */
 .baseRootItemActive {
@@ -217,13 +208,13 @@ $ACTIVE_BACKGROUND: #ffffff;
   &:after {
     position: absolute;
     content: '';
-    width: 9px;
-    height: 9px;
+    width: 7px;
+    height: 7px;
     border-top: 2px solid;
     border-right: 2px solid;
     transform: translateX(calc(100% + 6px)) translateY(100%) rotate(135deg);
     right: 0;
-    top: 0;
+    top: 4px;
     transition: all 1s ease 0s;
   }
   &--reverse {
