@@ -3,7 +3,6 @@
     <home-menu-item
       :my-router="HomeRoute.children"
       :init-level="0"
-      :bg-color="bgColor"
       :duration="300"
       :bg-color-level="1"
       :base-path="HomeRoute.path"
@@ -25,7 +24,6 @@ export default defineComponent({
     const $store = useStore();
     return {
       HomeRoute,
-      bgColor: 'bg-white',
       thumbStyleOfMenu,
     };
   },

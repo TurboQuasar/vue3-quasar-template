@@ -1,19 +1,21 @@
 <template>
   <q-btn flat no-caps no-wrap class="q-ml-xs" v-if="$q.screen.gt.xs">
-    <q-icon name="app:logo" class="app-logo" />
-    <!--    <q-toolbar-title shrink class="text-weight-bold">-->
-    <!--      {{ $projectName }}-->
-    <!--    </q-toolbar-title>-->
+    <q-icon :name="iconName" class="app-logo" />
   </q-btn>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent, inject, toRefs } from 'vue';
 
 export default defineComponent({
   name: 'ToolbarTitle',
-  setup() {
-    return {};
+  setup(props) {
+    const isDark = inject('is-dark')
+    return {
+      iconName: computed(() => {
+        return isDark ? 'app:logo-white' : 'app:logo';
+      }),
+    };
   },
 });
 </script>

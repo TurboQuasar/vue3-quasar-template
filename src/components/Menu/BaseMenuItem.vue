@@ -70,19 +70,23 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, PropType } from 'vue';
 import { useRoute } from 'vue-router';
+import { AppRouteModule } from 'router/types';
 
 export default defineComponent({
   name: 'base-menu-item',
-  props: [
-    'myRouter',
-    'initLevel',
-    'bgColor',
-    'bgColorLevel',
-    'duration',
-    'basePath',
-  ],
+  props: {
+    myRouter: {
+      type: Array as PropType<AppRouteModule[]>,
+      required: true,
+    },
+    initLevel: Number,
+    bgColor: String,
+    bgColorLevel: Number,
+    duration: Number,
+    basePath: String,
+  },
   setup(props, context) {
     /**
      * 处理内部链接
@@ -153,32 +157,31 @@ $ITEM_COLOR: #2c3e50;
 /* item 激活时颜色 */
 $ACTIVE_COLOR: $yellow-;
 $ACTIVE_BACKGROUND: #ffffff;
-
-.base-item-class {
-  color: $ITEM_COLOR !important;
-}
-/* item 被激活时父菜单的样式 */
-.baseRootItemActive {
-  color: $ACTIVE_COLOR !important;
-}
-/* item 被激活时的样式 */
-.base-item-active {
-  color: $ACTIVE_COLOR !important;
-  background: $ACTIVE_BACKGROUND;
-  transition: all 0.618s;
-  &:after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 100%;
-    background: $ACTIVE_COLOR !important;
-    top: -0.5px;
-    left: 0;
-  }
-}
 .base-menu-item {
   .q-item__section {
     text-align: center;
+  }
+  .base-item-class {
+    color: $ITEM_COLOR !important;
+  }
+  /* item 被激活时父菜单的样式 */
+  .baseRootItemActive {
+    color: $ACTIVE_COLOR !important;
+  }
+  /* item 被激活时的样式 */
+  .base-item-active {
+    color: $ACTIVE_COLOR !important;
+    background: $ACTIVE_BACKGROUND;
+    transition: all 0.618s;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background: $ACTIVE_COLOR !important;
+      top: -0.5px;
+      left: 0;
+    }
   }
 }
 </style>

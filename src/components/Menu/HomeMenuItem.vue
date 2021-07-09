@@ -6,7 +6,7 @@
    basePath : 上级菜单
 -->
 <template>
-  <div class="base-menu-item">
+  <div class="home-menu-item">
     <template v-for="item in newRouter">
       <template v-if="item.meta.isHidden !== true">
         <!-- 没有可显示孩子或者隐藏子菜单 -->
@@ -80,20 +80,32 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, ref, toRefs } from 'vue';
+import {
+  computed,
+  defineComponent,
+  PropType,
+  reactive,
+  ref,
+  toRefs,
+  inject,
+} from 'vue';
 import { useRoute } from 'vue-router';
+import { AppRouteModule } from 'router/types';
 
 export default defineComponent({
   name: 'homeMenuItem',
-  props: [
-    'myRouter',
-    'initLevel',
-    'bgColor',
-    'bgColorLevel',
-    'duration',
-    'basePath',
-  ],
+  props: {
+    myRouter: {
+      type: Array as PropType<AppRouteModule[]>,
+      required: true,
+    },
+    initLevel: Number,
+    bgColorLevel: Number,
+    duration: Number,
+    basePath: String,
+  },
   setup(props, context) {
+    const isDark = inject('is-dark');
     /**
      * 处理内部链接
      * @param basePath
@@ -128,14 +140,14 @@ export default defineComponent({
     }
     const $route = useRoute();
     const baseItemClass =
-      props.bgColor + '-' + props.bgColorLevel + ' base-item-class';
+      `${isDark ? 'bg-232323' : 'bg-white'}` + 'base-item-class';
     /**
      * 处理子菜单被激活的样式，同时修改父菜单样式
      */
     const baseItemClassWithNoChildren = computed(() => {
       return (path) => {
         return $route.fullPath.startsWith(path)
-          ? 'baseRootItemActive base-item-class' + baseItemClass
+          ? 'baseRootItemActive ' + baseItemClass
           : baseItemClass;
       };
     });
@@ -167,38 +179,36 @@ $ITEM_COLOR: $gray-400;
 /* item 激活时颜色 */
 $ACTIVE_COLOR: $yellow-;
 $ACTIVE_BACKGROUND: #ffffff;
-
-.base-item-class {
-  color: $ITEM_COLOR !important;
-  font-size: 14px !important;
-}
-/* item 被激活时父菜单的样式 */
-.baseRootItemActive {
-  color: $ACTIVE_COLOR !important;
-}
-/* item 被激活时的样式 */
-.base-item-active {
-  color: $ACTIVE_COLOR !important;
-  background: $ACTIVE_BACKGROUND;
-  transition: all 0.618s;
-  &:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: $ACTIVE_COLOR !important;
-    top: 100%;
-    left: 0;
-  }
-}
-
-.sub-item-active {
-  color: $ACTIVE_COLOR !important;
-  background: $ACTIVE_BACKGROUND;
-}
-.base-menu-item {
+.home-menu-item {
   .q-item__section {
     text-align: center;
+  }
+  .base-item-class {
+    color: $ITEM_COLOR !important;
+    font-size: 14px !important;
+  }
+  /* item 被激活时父菜单的样式 */
+  .baseRootItemActive {
+    color: $ACTIVE_COLOR !important;
+  }
+  /* item 被激活时的样式 */
+  .base-item-active {
+    color: $ACTIVE_COLOR !important;
+    transition: all 0.618s;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: $ACTIVE_COLOR !important;
+      top: 100%;
+      left: 0;
+    }
+  }
+
+  .sub-item-active {
+    color: $ACTIVE_COLOR !important;
+    background: $ACTIVE_BACKGROUND;
   }
 }
 </style>

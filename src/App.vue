@@ -6,6 +6,7 @@ import { defineComponent } from 'vue';
 import { useQuasar } from 'quasar';
 const myIcons = {
   'app:logo': 'img:/icons/logo.svg',
+  'app:logo-white': 'img:/icons/logo-white.svg',
 };
 export default defineComponent({
   name: 'App',
