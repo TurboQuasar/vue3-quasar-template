@@ -8,7 +8,7 @@
       <!-- 状态栏 -->
       <q-toolbar>
         <!-- toolbar - title -->
-        <toolbar-title />
+        <toolbar-title :is-dark="isDark" />
         <q-space />
         <home-menu />
         <q-space />
@@ -20,7 +20,7 @@
       </q-toolbar>
     </q-header>
     <!-- HEADER END -->
-    <q-footer>
+    <q-footer class="bg-232323">
       <q-toolbar>
         <q-toolbar-title>Footer</q-toolbar-title>
       </q-toolbar>

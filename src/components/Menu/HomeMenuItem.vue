@@ -1,8 +1,7 @@
 <!--
-   动态菜单 item 递归实现
+   动态菜单 item
    myRouter ： 菜单列表
    initLevel ： 菜单初始化缩进等级
-   bgColorLevel ：菜单背景色
    basePath : 上级菜单
 -->
 <template>
@@ -100,7 +99,6 @@ export default defineComponent({
       required: true,
     },
     initLevel: Number,
-    bgColorLevel: Number,
     duration: Number,
     basePath: String,
   },

@@ -5,15 +5,20 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, toRefs } from 'vue';
+import { computed, defineComponent, toRefs } from 'vue';
 
 export default defineComponent({
   name: 'ToolbarTitle',
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup(props) {
-    const isDark = inject('is-dark')
     return {
       iconName: computed(() => {
-        return isDark ? 'app:logo-white' : 'app:logo';
+        return toRefs(props).isDark.value ? 'app:logo-white' : 'app:logo';
       }),
     };
   },
