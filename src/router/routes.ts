@@ -172,6 +172,17 @@ export const HomeRoute: AppRouteRecordRaw = {
       },
       component: () => import('pages/Download/Index.vue'),
     },
+    {
+      path: 'login-register',
+      name: 'login-register',
+      meta: {
+        title: '登录/注册',
+        icon: '',
+        keepAlive: true,
+        isHidden: true,
+      },
+      component: () => import('pages/LoginRegister/Index.vue'),
+    },
   ],
 };
 // Always leave this as last one,

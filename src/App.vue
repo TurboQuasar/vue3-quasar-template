@@ -7,6 +7,7 @@ import { useQuasar } from 'quasar';
 const myIcons = {
   'app:logo': 'img:/icons/logo.svg',
   'app:logo-white': 'img:/icons/logo-white.svg',
+  'app:login-register': 'img:/icons/login-register.svg',
 };
 export default defineComponent({
   name: 'App',

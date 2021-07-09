@@ -1,5 +1,5 @@
 <template>
-  <q-layout :view="viewStyle" class="full-height main-layout">
+  <q-layout :view="viewStyle" class="full-height home-layout">
     <!-- HEADER START -->
     <q-header
       class="bg-white text-333333 row align-center"
@@ -20,7 +20,7 @@
       </q-toolbar>
     </q-header>
     <!-- HEADER END -->
-    <q-footer class="bg-232323">
+    <q-footer class="bg-272727">
       <q-toolbar>
         <q-toolbar-title>Footer</q-toolbar-title>
       </q-toolbar>
@@ -66,8 +66,9 @@ export default {
   setup() {
     const $store = useStore();
     const $route = useRoute();
+    const $router = useRouter();
     const isDark = computed(() => {
-      return ['home', 'loginRegister'].includes($route.name);
+      return ['home', 'login-register'].includes($route.name);
     });
     provide('is-dark', isDark);
     return {
@@ -77,7 +78,7 @@ export default {
       key: computed(() => $route.fullPath),
       loginRegisterBtnName: '登录/注册',
       handleClickLoginRegisterBtn: () => {
-        // $route.push()
+        $router.push({ name: 'login-register' });
       },
       isDark,
     };
@@ -85,14 +86,14 @@ export default {
 };
 </script>
 <style lang="scss">
-.main-layout {
+.home-layout {
   .q-drawer {
     box-shadow: 0 2px 6px 0 #f2f8ff;
     background-color: #ffffff;
   }
   .q-header {
     height: 60px;
-    box-shadow: 0 2px 6px 0 #f2f8ff;
+    //box-shadow: 0 2px 6px 0 #f2f8ff;
   }
   .login-register-btn {
     width: 103px;
@@ -103,6 +104,9 @@ export default {
   }
   .bg-232323 {
     background-color: #232323 !important;
+  }
+  .bg-272727 {
+    background-color: #272727 !important;
   }
   .text-333333 {
     color: $gray-400;
