@@ -68,7 +68,7 @@ export default {
     const $route = useRoute();
     const $router = useRouter();
     const isDark = computed(() => {
-      return ['home', 'login-register'].includes($route.name);
+      return ['home', 'login-register'].includes($route.name as string);
     });
     provide('is-dark', isDark);
     return {
